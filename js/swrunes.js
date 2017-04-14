@@ -1162,7 +1162,7 @@ function calculateActualAndMax(monster) {
 
 // determines rune set bonuses and adds them into rune bonus stats
 function determineCompleteSetsAndEffects(monster, runes){
-	var setCounter = emptySetCounter;
+	var setCounter = emptySetCounter.clone();
 	for(i=0; i<runes.length; i++) {
 		setCounter[runes[i].set]++;
 	}
@@ -1779,7 +1779,7 @@ function getPossiblePermutations(setsForAllSlots, requestedSetTypes) {
 	}
 	// if different sets are selected, advanced logic
 	else {
-		var equippedSetTypes = emptySetCounter;
+		var equippedSetTypes = emptySetCounter.clone();
 		var numberOfEquippedRequestedSetSlots = 0;
 		var addedCounter = [false,false,false,false,false,false];
 		
@@ -1902,7 +1902,7 @@ function optimize(gridRunes, gridMons, focusSelected, saveToFile) {
 		}
 	}
 	// validate requested sets
-	var requestedSetTypes = emptySetCounter;
+	var requestedSetTypes = emptySetCounter.clone();
 	if( $("#opt_set1").val() != "")
 		requestedSetTypes[$("#opt_set1").val()] += allSets[$("#opt_set1").val()][0];
 	if( $("#opt_set2").val() != "")
@@ -1953,7 +1953,7 @@ function optimize(gridRunes, gridMons, focusSelected, saveToFile) {
 	var i4 = 0;
 	var i5 = 0;
 	var iterations = 0;
-	var equippedSetTypes = emptySetCounter;
+	var equippedSetTypes = emptySetCounter.clone();
 	var numberOfEquippedRequestedSetSlots = 0;
 	var addedCounter = [false,false,false,false,false,false];
 	var lastProcessed = [-1,-1,-1,-1,-1,-1];
@@ -2167,7 +2167,7 @@ function optimize(gridRunes, gridMons, focusSelected, saveToFile) {
 									}
 									
 									if($("#opt_no_broken").is(':checked')) {
-										var equippedSetTypes1 = emptySetCounter;
+										var equippedSetTypes1 = emptySetCounter.clone();
 										equippedSetTypes1[ setsForAllSlots[0][i0]["set"] ] += 1;
 										equippedSetTypes1[ setsForAllSlots[1][i1]["set"] ] += 1;
 										equippedSetTypes1[ setsForAllSlots[2][i2]["set"] ] += 1;
