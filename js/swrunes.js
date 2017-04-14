@@ -18,8 +18,10 @@ var allSets = {
 	"Revenge":[2, "", ""], //12
 	"Despair":[4, "", ""], //13
 	"Vampire":[4, "", ""], //14
-	"Destroy":[2, "", ""]
-}; //15
+	"Destroy":[2, "", ""], //15
+    "Fight":[2, "", ""], //16
+    "Tolerance":[2, "", ""] //17    
+}; 
 
 var allStatsMax = {
 	"SPD":{ "g1":18, "g2":19, "g3":25, "g4":30, "g5":39, "g6":42},
@@ -65,7 +67,7 @@ var allRunesStats = {
 
 
 // do not modify thos in the code! Used only for display
-var emptySetCounter = {"Energy": 0,"Fatal":0,"Blade":0,"Rage":0,"Swift":0,"Focus":0,"Guard":0,"Endure":0,"Violent":0,"Will":0,"Nemesis":0,"Shield":0,"Revenge":0,"Despair":0,"Vampire":0,"Destroy":0};
+var emptySetCounter = {"Energy": 0,"Fatal":0,"Blade":0,"Rage":0,"Swift":0,"Focus":0,"Guard":0,"Endure":0,"Violent":0,"Will":0,"Nemesis":0,"Shield":0,"Revenge":0,"Despair":0,"Vampire":0,"Destroy":0,"Fight":0,"Tolerance":0};
 var emptyRune = {"id": "", "monster":"", "monster_n":"", "set":"", "slot":"", "grade":"", "level":"", "m_t":"", "m_v":"", "i_t":"", "i_v":"", "s1_t":"", "s1_v":"", "s2_t":"", "s2_v":"", "s3_t":"", "s3_v":"", "s4_t":"", "s4_v":""};
 var emptyMonster = {"id":"", "name":"", "level":"", "b_hp":"", "b_atk":"", "b_def":"", "b_spd":"", "b_crate":"", "b_cdmg":"", "b_res":"", "b_acc":""};
 
@@ -1160,7 +1162,7 @@ function calculateActualAndMax(monster) {
 
 // determines rune set bonuses and adds them into rune bonus stats
 function determineCompleteSetsAndEffects(monster, runes){
-	var setCounter = {"Energy": 0,"Fatal":0,"Blade":0,"Rage":0,"Swift":0,"Focus":0,"Guard":0,"Endure":0,"Violent":0,"Will":0,"Nemesis":0,"Shield":0,"Revenge":0,"Despair":0,"Vampire":0,"Destroy":0};
+	var setCounter = emptySetCounter;
 	for(i=0; i<runes.length; i++) {
 		setCounter[runes[i].set]++;
 	}
@@ -1777,7 +1779,7 @@ function getPossiblePermutations(setsForAllSlots, requestedSetTypes) {
 	}
 	// if different sets are selected, advanced logic
 	else {
-		var equippedSetTypes = {"Energy": 0,"Fatal":0,"Blade":0,"Rage":0,"Swift":0,"Focus":0,"Guard":0,"Endure":0,"Violent":0,"Will":0,"Nemesis":0,"Shield":0,"Revenge":0,"Despair":0,"Vampire":0,"Destroy":0};
+		var equippedSetTypes = emptySetCounter;
 		var numberOfEquippedRequestedSetSlots = 0;
 		var addedCounter = [false,false,false,false,false,false];
 		
@@ -1900,7 +1902,7 @@ function optimize(gridRunes, gridMons, focusSelected, saveToFile) {
 		}
 	}
 	// validate requested sets
-	var requestedSetTypes = {"Energy": 0,"Fatal":0,"Blade":0,"Rage":0,"Swift":0,"Focus":0,"Guard":0,"Endure":0,"Violent":0,"Will":0,"Nemesis":0,"Shield":0,"Revenge":0,"Despair":0,"Vampire":0,"Destroy":0};
+	var requestedSetTypes = emptySetCounter;
 	if( $("#opt_set1").val() != "")
 		requestedSetTypes[$("#opt_set1").val()] += allSets[$("#opt_set1").val()][0];
 	if( $("#opt_set2").val() != "")
@@ -1951,7 +1953,7 @@ function optimize(gridRunes, gridMons, focusSelected, saveToFile) {
 	var i4 = 0;
 	var i5 = 0;
 	var iterations = 0;
-	var equippedSetTypes = {"Energy": 0,"Fatal":0,"Blade":0,"Rage":0,"Swift":0,"Focus":0,"Guard":0,"Endure":0,"Violent":0,"Will":0,"Nemesis":0,"Shield":0,"Revenge":0,"Despair":0,"Vampire":0,"Destroy":0};
+	var equippedSetTypes = emptySetCounter;
 	var numberOfEquippedRequestedSetSlots = 0;
 	var addedCounter = [false,false,false,false,false,false];
 	var lastProcessed = [-1,-1,-1,-1,-1,-1];
@@ -2165,7 +2167,7 @@ function optimize(gridRunes, gridMons, focusSelected, saveToFile) {
 									}
 									
 									if($("#opt_no_broken").is(':checked')) {
-										var equippedSetTypes1 = {"Energy": 0,"Fatal":0,"Blade":0,"Rage":0,"Swift":0,"Focus":0,"Guard":0,"Endure":0,"Violent":0,"Will":0,"Nemesis":0,"Shield":0,"Revenge":0,"Despair":0,"Vampire":0,"Destroy":0};
+										var equippedSetTypes1 = emptySetCounter;
 										equippedSetTypes1[ setsForAllSlots[0][i0]["set"] ] += 1;
 										equippedSetTypes1[ setsForAllSlots[1][i1]["set"] ] += 1;
 										equippedSetTypes1[ setsForAllSlots[2][i2]["set"] ] += 1;

@@ -21,7 +21,9 @@ $allSets = array(
 	"Revenge"=>array(2, "", ""), 
 	"Despair"=>array(4, "", ""), 
 	"Vampire"=>array(4, "", ""), 
-	"Destroy"=>array(2, "", "") 
+	"Destroy"=>array(2, "", ""), 
+    "Fight"=>array(2, "", ""),
+    "Tolerance"=>array(2, "", "")
 ); 
 
 $allStatsMax = array(
